@@ -31,7 +31,7 @@ steps:
 - task: Docker@2
   displayName: 'Push Docker image to ACR'
   inputs:
-    containerRegistry: 'Azure-DevOps-Demo-Connection'
+    containerRegistry: 'ACR-Docker-Connection'
     repository: 'hello-world-app'
     command: 'push'
     tags: |
