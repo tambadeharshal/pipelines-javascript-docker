@@ -25,5 +25,5 @@ steps:
 
 - script: |
     cd app
-    docker build -t hello-world-app:$(Build.BuildId) .
+    docker build -t devopsdemoacr2026.azurecr.io/hello-world-app:$(Build.BuildId) .
   displayName: 'Build Docker image'
