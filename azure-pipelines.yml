@@ -1,0 +1,29 @@
+trigger:
+- main
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+
+- task: NodeTool@0
+  displayName: 'Install Node.js'
+  inputs:
+    versionSpec: '20.x'
+
+- script: |
+    cd app
+    npm ci
+  displayName: 'Install dependencies'
+
+- script: |
+    cd app
+    npm start &
+    sleep 5
+    curl http://localhost:8080
+  displayName: 'Run application test'
+
+- script: |
+    cd app
+    docker build -t hello-world-app:$(Build.BuildId) .
+  displayName: 'Build Docker image'
